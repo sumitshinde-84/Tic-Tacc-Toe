@@ -1,0 +1,76 @@
+@font-face {
+    font-family: Gamename;
+    src: url('fonts/PlayMeGames-Demo.otf');
+}
+
+
+
+:root{
+
+    /* Color pallet  */
+  --Dominant-clr:#E4F2E7;
+  --Element-clr:#93BFB7;
+  --Dark-accent:#2D3E40;
+   
+  /* Extra colors */
+
+--gray-acccent:#387373;
+--pinkish-clr:#97A6A0;
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.main{
+
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--Dominant-clr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main .text{
+
+    font-family: Gamename;
+    font-weight: 500;
+    font-size: 60px;
+    color: var(--Dark-accent);
+}
+
+
+.progress-bar{
+    position: relative;
+    width: 450px;
+    height: 3em;
+    background-color:var(--Dark-accent);
+    border-radius: 1.5em;
+}
+
+.progress-bar::before{
+
+    content: attr(data-label);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0.5em;
+    top: 0.5em;
+    bottom: 0.5em;
+    color: var(--Dominant-clr);
+    font-weight: 400;
+    width: calc(var(--width, 0) * 1%);
+    min-width: 2rem;
+    max-width: calc(100% - 3em);
+    background-color: var(--gray-acccent);
+    border-radius: 1em;
+    padding: 1em;
+}
