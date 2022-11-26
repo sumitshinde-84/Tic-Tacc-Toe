@@ -62,11 +62,14 @@
     }, 5)
     
     const text = document.querySelector('.text');
+    const versus = document.querySelector('.versus')
 
     window.addEventListener('load',()=>{
         setTimeout(() => {
             text.style.display='none'
             progressBar.style.display='none'
+            versus.style='display:block'
+            typewriter();
         }, 6000);
     })
 

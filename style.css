@@ -51,7 +51,7 @@
     font-weight: 500;
     font-size: 60px;
     color: var(--Dark-accent);
-    display: none;
+    
 }
 
 
@@ -61,7 +61,7 @@
     height: 3em;
     background-color:var(--Dark-accent);
     border-radius: 1.5em;
-    display: none;
+    
 }
 
 .progress-bar::before{
@@ -84,6 +84,11 @@
     
 }
 
+
+.versus{
+    display: none;
+}
+
 .versus img{
     width: 300px;
     
@@ -96,6 +101,7 @@
    position: absolute;
    bottom: 30%;
    right: 15%;
+   
     
 }
 
@@ -121,6 +127,7 @@
     left: 38%;
     align-items: center;
     justify-content: center;
+    
    
 
 }
