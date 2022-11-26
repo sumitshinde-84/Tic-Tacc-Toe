@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -22,11 +23,58 @@
 
 
         </div>
+       
 
+        <div class="versus">
+
+            <div class="versus-bar">
+
+                
+            <p>PLAYER</p>
+            <img src="images/vs-removebg-preview.png" alt="versus" >
+            <p>COMPUTER</p>
+            </div>
+        <div class="versus-option-sect">
+
+
+            <div class="select-versus">
+              
+                <button class="player">PLAYER</button>
+                <button class="computer">COMPUTER</button>
+            </div>
+            <div id="typedtext">
+
+
+            </div>
+        </div>
+        </div>
 
     </div>
 
 <script src="script.js"></script>
+<script>const progressBar = document.getElementsByClassName('progress-bar')[0];
+    setInterval(()=>{
 
+        const computedStyle = getComputedStyle(progressBar);
+        const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+        progressBar.style.setProperty('--width', width + .1)
+        
+    }, 5)
+    
+    const text = document.querySelector('.text');
+
+    window.addEventListener('load',()=>{
+        setTimeout(() => {
+            text.style.display='none'
+            progressBar.style.display='none'
+        }, 6000);
+    })
+
+
+
+
+
+    
+    </script>
 </body>
 </html>

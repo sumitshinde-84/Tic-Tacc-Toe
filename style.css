@@ -2,6 +2,11 @@
     font-family: Gamename;
     src: url('fonts/PlayMeGames-Demo.otf');
 }
+@font-face {
+    font-family: versusFont;
+    src: url('fonts/PAC-FONT.TTF');
+}
+
 
 
 
@@ -28,7 +33,7 @@
 }
 
 .main{
-
+    position: relative;
     width: 100vw;
     height: 100vh;
     background-color: var(--Dominant-clr);
@@ -37,6 +42,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+
 }
 
 .main .text{
@@ -45,6 +51,7 @@
     font-weight: 500;
     font-size: 60px;
     color: var(--Dark-accent);
+    display: none;
 }
 
 
@@ -54,6 +61,7 @@
     height: 3em;
     background-color:var(--Dark-accent);
     border-radius: 1.5em;
+    display: none;
 }
 
 .progress-bar::before{
@@ -73,4 +81,77 @@
     background-color: var(--gray-acccent);
     border-radius: 1em;
     padding: 1em;
+    
+}
+
+.versus img{
+    width: 300px;
+    
+}
+
+.versus-bar{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   bottom: 30%;
+   right: 15%;
+    
+}
+
+.versus-bar p:first-child ,p:last-child{
+    font-family: Gamename;
+    font-size: 55px;
+    color: var(--Dark-accent);
+}
+
+.versus-option-sect{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 50px; 
+    align-items: center;
+}
+
+
+.select-versus{
+    display: flex;
+    gap: 70px;
+    position: absolute;
+    top: 80%;
+    left: 38%;
+    align-items: center;
+    justify-content: center;
+   
+
+}
+
+
+.select-versus button{
+    padding: 12px 20px;
+    border: 2px var(--Dark-accent) solid;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    transition: .6s;
+
+}
+
+.select-versus button:hover{
+    padding: 12px 20px;
+    border: 2px var(--Dark-accent) solid;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    background-color: #2D3E40;
+    color: var(--Dominant-clr);
+
+}
+
+#typedtext{
+    position: absolute;
+    bottom: 23%;
+    margin-right: 10px;
+    letter-spacing: 2px; 
+    font-weight: 900;
+    font-size:16px;
+    font-family: 'Waiting for the Sunrise', cursive; 
+
 }
