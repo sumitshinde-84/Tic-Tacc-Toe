@@ -51,7 +51,56 @@ let ticTacToe = (function(){
 
     
     })
+
+// TIC TAC TOE Code starts form hear 
+
+let count =0;
+let startGame = function(i){
+
+    const Block = document.querySelector(`.block${i}`);
+    if(Block.childElementCount>0){
+        return
+    }
+    const para = document.createElement('p');
+    let createPlayer = function(mark){
       
-   
+        
+
+        function addMark(){
+            para.textContent=mark
+          Block.appendChild(para)
+          count++;  
+
+         
+        }
+
+        return{
+            addMark
+        }
+
+    }
+    player1 = createPlayer('X');
+    player2 = createPlayer('O');
+
+   if(count % 2 == 0){
+       player1.addMark()
+   }else{
+       player2.addMark()
+   }
+
+}
+  
+
+    return{
+        startGame
+    }    
 
 })()
+
+
+function hop(i){
+    ticTacToe.startGame(i)
+
+}
+
+  
