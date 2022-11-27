@@ -32,6 +32,12 @@
 
 }
 
+body{
+    display: flex;
+    justify-content: center;
+    background-color: var(--Dark-accent);
+}
+
 .main{
     position: relative;
     width: 100vw;
@@ -42,6 +48,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    transition: 1.5s;
 
 }
 
@@ -51,6 +58,7 @@
     font-weight: 500;
     font-size: 60px;
     color: var(--Dark-accent);
+   
     
 }
 
@@ -61,7 +69,7 @@
     height: 3em;
     background-color:var(--Dark-accent);
     border-radius: 1.5em;
-    
+
 }
 
 .progress-bar::before{
@@ -85,8 +93,56 @@
 }
 
 
+.playboard{
+    display: none;
+    transition: 1s;
+    
+}
+
+.playboard .icon{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    gap: 20px;
+   position: absolute;
+   top: 10px;
+   left: 20px;
+}
+
+
+
+
+.playboard img{
+    width: 30px;
+    height: 30px;
+}
+
+
+.playboard .option{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px var(--Dark-accent) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playboard .option:hover{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px var(--Dark-accent) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px var(--gray-acccent);
+}
+
+
 .versus{
     display: none;
+    transition: 1s;
 }
 
 .versus img{
@@ -185,3 +241,34 @@
     from, to { border-color: transparent }
     50% { border-color: orange; }
   }
+
+
+
+.playground{
+    width:300px;
+    height: 300px;
+    border: 2px var(--Dark-accent) solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    background-color: #2D3E40;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow:  5px 5px 5px var(--gray-acccent);
+
+}
+
+.block{
+    background-color: var(--Dominant-clr);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    box-shadow:inset  5px 5px 5px var(--gray-acccent);
+    font-size: 50px;
+    text-align: center;
+    align-items: center;
+    font-family: Gamename;
+    color: var(--gray-acccent);
+    
+}

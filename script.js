@@ -14,18 +14,44 @@ let ticTacToe = (function(){
   
     const text = document.querySelector('.text');
     const versus = document.querySelector('.versus')
+    const versusButton = document.querySelector('.computer')
+    const playBoard = document.querySelector('.playboard')
+    const main = document.querySelector('.main')
+   
+    versusButton.addEventListener('click',()=>{
+        versus.style='display:none'
+       
+        main.style='width:0'
+        setTimeout(()=>{
+            
+            main.style=' position: relative ;width: 100vw;height: 100vh;background-color: var(--Dominant-clr);display: flex;align-items: center;justify-content: center; flex-direction: column;gap: 20px;'
+           setTimeout(()=>{
+            playBoard.style.display='block'
+           },1500)
+
+        },1300)
+    })
 
     window.addEventListener('load',()=>{
         setTimeout(() => {
             text.style.display='none'
             progressBar.style.display='none'
-            versus.style='display:block'
+            main.style='width:0'
+            setTimeout(()=>{
+                
+                main.style=' position: relative ;width: 100vw;height: 100vh;background-color: var(--Dominant-clr);display: flex;align-items: center;justify-content: center; flex-direction: column;gap: 20px;'
+               setTimeout(()=>{
+                versus.style='display:block'
+               },1500)
+
+            },1300)
            
             
         }, 6000);
 
-       
-      
+    
     })
+      
+   
 
 })()
