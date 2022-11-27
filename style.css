@@ -152,13 +152,36 @@
 
 }
 
+
 #typedtext{
     position: absolute;
-    bottom: 23%;
-    margin-right: 10px;
-    letter-spacing: 2px; 
-    font-weight: 900;
-    font-size:16px;
-    font-family: 'Waiting for the Sunrise', cursive; 
-
+      top: 70%;
+      right: 33%;
 }
+
+#typedtext h1 {
+     font-family: 'Waiting for the Sunrise', cursive;  ;
+    font-size: 15px;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .4em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(43, end),
+      blink-caret .75s step-end infinite;
+      
+    
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
