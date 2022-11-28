@@ -59,7 +59,7 @@ body{
     font-size: 60px;
     color: var(--Dark-accent);
    
-    
+   /*  */
 }
 
 
@@ -69,6 +69,7 @@ body{
     height: 3em;
     background-color:var(--Dark-accent);
     border-radius: 1.5em;
+    /*  */
 
 }
 
@@ -95,7 +96,13 @@ body{
 
 .playboard{
     display: none;
-    transition: 1s;
+    /* transition: 1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    
+  
     
 }
 
@@ -158,6 +165,7 @@ body{
    bottom: 30%;
    right: 15%;
    
+   
     
 }
 
@@ -182,7 +190,7 @@ body{
     top: 80%;
     left: 38%;
     align-items: center;
-    justify-content: center;
+   
     
    
 
@@ -256,6 +264,7 @@ body{
     padding: 10px;
     border-radius: 4px;
     box-shadow:  5px 5px 5px var(--gray-acccent);
+   
 
 }
 
@@ -265,10 +274,72 @@ body{
     display: flex;
     justify-content: center;
     box-shadow:inset  5px 5px 5px var(--gray-acccent);
-    font-size: 50px;
+    
     text-align: center;
     align-items: center;
-    font-family: Gamename;
+    
     color: var(--gray-acccent);
+    
+}
+
+
+#turnMsg {
+    
+    font-size: 17px;
+    font-family: 'Waiting for the Sunrise', cursive; ;
+    font-weight: 900;
+    text-align: center;
+    color:var(--Dark-accent);
+    position: absolute;
+    top: 50px;
+    align-self: center;
+    left:600px;
+
+    
+}
+
+
+#ready{
+   
+    
+    padding: 10px 17px;
+    margin-top: 25px;
+    margin-left: 110px;
+    transition: .5s;
+    border: 1px var(--Dark-accent) solid;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
+    
+}
+
+#ready:hover{
+   
+    
+    padding: 10px 17px;
+    margin-top: 25px;
+    
+    background-color: var(--Dark-accent);
+    color: var(--Dominant-clr);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
+    
+    
+    
+}
+
+
+.playerPlate{
+
+    height: 100px;
+    width: 300px;
+    border: 3px var(--Dark-accent) solid; 
+    border-radius: 4px;
+    position: absolute;
+    top:210px;
+    transition: .5s;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
