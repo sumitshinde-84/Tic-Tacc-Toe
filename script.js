@@ -26,11 +26,11 @@ let ticTacToe = (function(){
   
     const text = document.querySelector('.text');
     const versus = document.querySelector('.versus')
-    const versusButton = document.querySelector('.computer')
+    const versusButtonPlayer = document.querySelector('.player')
     const playBoard = document.querySelector('.playboard')
     const main = document.querySelector('.main')
    
-    versusButton.addEventListener('click',()=>{
+    versusButtonPlayer.addEventListener('click',()=>{
         versus.style='display:none'
        
         main.style='width:0'
