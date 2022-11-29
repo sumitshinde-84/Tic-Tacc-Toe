@@ -1,7 +1,8 @@
 let ticTacToe = (function(){
 
 
-   
+    let player1;
+    let player2;
     const turnMsg = document.querySelector('#turnMsg');
     const progressBar = document.getElementsByClassName('progress-bar')[0]
 
@@ -43,7 +44,7 @@ let ticTacToe = (function(){
             
             main.style=' position: relative ;width: 100vw;height: 100vh;background-color: var(--Dominant-clr);display: flex;align-items: center;justify-content: center; flex-direction: column;gap: 20px;'
            setTimeout(()=>{
-            playBoard.style.display='block'
+            playBoard.style.display='flex'
 
            },1500)
 
@@ -80,13 +81,16 @@ playGroundMark = [0,1,2,3,4,5,6,7,8]
 let startGame = function(i){
    
     const Block = document.querySelector(`.block${i}`);
+   
     const turnMsg = document.querySelector('#turnMsg');
 
     if(Block.childElementCount>0){
         return
     }
-
+    const PlayGround =document.querySelector('.playground')
     const para = document.createElement('p');
+    para.className='markPara'
+    let markPara = document.querySelectorAll('.markPara')
     let createPlayer = function(mark){
     
         function addMark(){
@@ -106,7 +110,9 @@ let startGame = function(i){
         turnMsg.textContent=`Now it's your Turn ${name}`
 
         }
+
     let Blockbg = document.querySelectorAll('.block')
+   
 
     checkPair  = function(){
 
@@ -114,12 +120,42 @@ let startGame = function(i){
            {
             
             result = true;
+            
+            Blockbg[0].style='background:orange;'
+            Blockbg[4].style='background:orange'
+            Blockbg[8].style='background:orange;'
+            setTimeout(()=>{
+                Blockbg[8].removeChild
+                
+            Blockbg[0].style='background:orange;transform:translate(0,95px)'
+            Blockbg[8].style='background:orange;transform:translate(0,-95px)'
+            Blockbg[2].style='background:orange;transform:translate(0,95px)'
+            Blockbg[6].style='background:orange;transform:translate(0,-95px)'
+            Blockbg[1].style='background:orange;transform:translate(0,95px)'
+            Blockbg[7].style='background:orange;transform:translate(0,-95px)'
+            Blockbg[8].querySelector('p').textContent=' '
+            },1000)
+            setTimeout(()=>{
+                
+                Blockbg[2].style='background:orange;transform:translate(-95px,95px)'
+                Blockbg[3].style='background:orange;transform:translate(95px,0)'
+                Blockbg[5].style='background:orange;transform:translate(-95px,0)'
+                Blockbg[8].style='background:orange;transform:translate(-95px,-95px)'
+                Blockbg[0].style='background:orange;transform:translate(95px,95px)'
+                Blockbg[6].style='background:orange;transform:translate(95px,-95px)'
+                paraMark.textContent=''
 
-            Blockbg[0].style.background='orange'
-            Blockbg[4].style.background='orange'
-            Blockbg[8].style.background='orange'
+            },5000)
 
+            setTimeout(()=>{
+                
+               
+                
+                Blockbg[8].style='scale:20;background:orange'
+                
 
+            },6000)
+          
 
            }else if(playGroundMark[2] === playGroundMark[4] && playGroundMark[4] === playGroundMark[6])
            {
