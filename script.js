@@ -117,10 +117,14 @@ let startGame = function(i){
 
         }
     let paraT
+    let BLOCK = document.querySelector('.block')
     let Blockbg = document.querySelectorAll('.block')
     let paraForWin = document.createElement('p')
     let replayBtn = document.createElement('button')
     replayBtn.textContent='REPLAY'
+
+        
+
         replayBtn.addEventListener('click',()=>{
             reset();
 
@@ -153,7 +157,7 @@ let startGame = function(i){
             PlayGround.style.background='#2D3E40'
             PlayGround.style.boxShadow='5px 5px 5px var(--gray-acccent)'
             PlayGround.style.border='2px var(--Dark-accent) solid'
-         
+        
             removeAllChildNodes(Blockbg[i])
             function removeAllChildNodes(parent) {
                 while (parent.firstChild) {
@@ -276,15 +280,15 @@ let startGame = function(i){
             Blockbg[7].firstChild.textContent='A'
             Blockbg[8].firstChild.textContent='W'
 
-            Blockbg[0].style='background:#A62B1F;color:#E4F2E7;transform:translate(-285px,95px)'
-            Blockbg[1].style='background:#A62B1F;color:#E4F2E7;transform:translate(-285px,95px)'
-            Blockbg[2].style='background:#A62B1F;color:#E4F2E7;transform:translate(-190px,95px)'
-            Blockbg[3].style='background:#A62B1F;color:#E4F2E7;;transform:translate(-95px,0)'
-            Blockbg[4].style='background:#A62B1F;color:#E4F2E7;transform:translate(0,0)'
-            Blockbg[5].style='background:#A62B1F;color:#E4F2E7;transform:translate(95px,0)'
-            Blockbg[6].style='background:#A62B1F;color:#E4F2E7;transform:translate(190px,-95px)'
-            Blockbg[7].style='background:#A62B1F;color:#E4F2E7;;transform:translate(285px,-95px)'
-            Blockbg[8].style='background:#A62B1F;color:#E4F2E7;transform:translate(285px,-95px)'
+            Blockbg[0].style='background:orange;transform:translate(-285px,95px)'
+            Blockbg[1].style='background:orange;transform:translate(-285px,95px)'
+            Blockbg[2].style='background:orange;transform:translate(-190px,95px)'
+            Blockbg[3].style='background:orange;transform:translate(-95px,0)'
+            Blockbg[4].style='background:orange;transform:translate(0,0)'
+            Blockbg[5].style='background:orange;transform:translate(95px,0)'
+            Blockbg[6].style='background:orange;transform:translate(190px,-95px)'
+            Blockbg[7].style='background:orange;transform:translate(285px,-95px)'
+            Blockbg[8].style='background:orange;transform:translate(285px,-95px)'
             
             turnMsg.style.display='none';
             Readybtn.style.display='none'
