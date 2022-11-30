@@ -105,7 +105,8 @@ let startGame = function(i){
           playGroundMark[i]=mark;
           console.log(playGroundMark)
          
-          count++; 
+          count++;
+         
          
         }
     let result='';
@@ -152,17 +153,21 @@ let startGame = function(i){
             PlayGround.style.background='#2D3E40'
             PlayGround.style.boxShadow='5px 5px 5px var(--gray-acccent)'
             PlayGround.style.border='2px var(--Dark-accent) solid'
-          playGroundMark= [0,1,2,3,4,5,6,7,8]
-          result=' '
-          markCount=0;
-          count=0
-
+         
             removeAllChildNodes(Blockbg[i])
             function removeAllChildNodes(parent) {
                 while (parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
+
             }
+            turnMsg.style.display='block';
+            Readybtn.style.display='block'
+            playGroundMark= [0,1,2,3,4,5,6,7,8]
+            result=''
+            markCount=0;
+            count=0
+  
 
         }
        
@@ -234,7 +239,7 @@ let startGame = function(i){
             playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
             playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
             
-            Blockbg[8].removeChild
+           
             
         Blockbg[0].style='background:orange;transform:translate(0,95px)'
         Blockbg[8].style='background:orange;transform:translate(0,-95px)'
@@ -242,7 +247,7 @@ let startGame = function(i){
         Blockbg[6].style='background:orange;transform:translate(0,-95px)'
         Blockbg[1].style='background:orange;transform:translate(0,95px)'
         Blockbg[7].style='background:orange;transform:translate(0,-95px)'
-        Blockbg[8].querySelector('p').textContent=' '
+        
         
         },1000)
         setTimeout(()=>{
@@ -258,7 +263,7 @@ let startGame = function(i){
             PlayGround.style.border='none'
             paraMark.textContent=''
 
-        },5000)
+        },3000)
         setTimeout(()=>{
             
             Blockbg[0].firstChild.textContent='I'
@@ -280,10 +285,12 @@ let startGame = function(i){
             Blockbg[6].style='background:#A62B1F;color:#E4F2E7;transform:translate(190px,-95px)'
             Blockbg[7].style='background:#A62B1F;color:#E4F2E7;;transform:translate(285px,-95px)'
             Blockbg[8].style='background:#A62B1F;color:#E4F2E7;transform:translate(285px,-95px)'
-
+            
+            turnMsg.style.display='none';
+            Readybtn.style.display='none'
            
 
-        },5000)
+        },4000)
 
     }
 
@@ -385,16 +392,17 @@ let startGame = function(i){
    if(count % 2 == 0 ){
     playerPlate2.style="height: 100px;width: 300px;border: 3px orange solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1;box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
     playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1"  
-        player1.Turn('player2')
+       
+    player1.Turn('player2')
        player1.addMark()
-       markCount++;
+       
        result = player1.checkPair()
      
        if(result==true && markCount< 8)
        {
         console.log('player1  win')
         player1.winAnimation()
-       }else if(result==false && markCount==8){
+       }else if(result==false && count>=8){
         DrawAnimation()
        }
        
@@ -407,16 +415,16 @@ let startGame = function(i){
     playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1"  
     player2.Turn('player1')
        player2.addMark()
-       markCount++;
+       
        result = player2.checkPair()
        console.log(result)
        
-       if(result==true && markCount< 8)
+       if(result==true && markCount< 9)
        {
         console.log('player2  win')
         player2.winAnimation()
 
-       }else if(result==false && markCount==8){
+       }else if(rresult==false && count>=8){
         DrawAnimation()
        }
 
