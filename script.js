@@ -5,7 +5,9 @@ let ticTacToe = (function(){
     let player2;
     const turnMsg = document.querySelector('#turnMsg');
     const progressBar = document.getElementsByClassName('progress-bar')[0]
+   
 
+    
     setInterval(()=>{
 
         const computedStyle = getComputedStyle(progressBar);
@@ -30,6 +32,8 @@ let ticTacToe = (function(){
         },1000)
     })
   
+    
+
     const text = document.querySelector('.text');
     const versus = document.querySelector('.versus')
     const versusButtonPlayer = document.querySelector('.player')
@@ -75,6 +79,7 @@ let ticTacToe = (function(){
 // TIC TAC TOE Code starts form hear 
 
 let count =0;
+let markCount=0;
 let playGroundMark = new Array(9)
 playGroundMark = [0,1,2,3,4,5,6,7,8]
 
@@ -103,7 +108,7 @@ let startGame = function(i){
           count++; 
          
         }
-    let result = false;
+    let result='';
      
     function Turn(name){
             
@@ -119,8 +124,13 @@ let startGame = function(i){
             reset();
 
         })
+
+    const ReplayIcon = document.querySelector('#replay')
+    ReplayIcon.addEventListener('click',()=>{
+        reset()
+    })
     paraForWin.className='winMsg'
-    reset = function(){
+   reset= function(){
 
         versus.style='display:none'
        
@@ -139,8 +149,13 @@ let startGame = function(i){
         for(let i=0;i<9;i++){
     
             Blockbg[i].style='background:#E4F2E7;transform:translate(0,0)'
-            
+            PlayGround.style.background='#2D3E40'
+            PlayGround.style.boxShadow='5px 5px 5px var(--gray-acccent)'
+            PlayGround.style.border='2px var(--Dark-accent) solid'
           playGroundMark= [0,1,2,3,4,5,6,7,8]
+          result=' '
+          markCount=0;
+          count=0
 
             removeAllChildNodes(Blockbg[i])
             function removeAllChildNodes(parent) {
@@ -198,7 +213,7 @@ let startGame = function(i){
             
 
         Blockbg[8].style='scale:20;background:orange'
-        paraForWin.textContent=`YOU WIN ADITYA`
+        paraForWin.textContent=`YOU WIN ${name}`
         paraForWin.style='font-size:3px; font-family:versusFont;color:#2D3E40;;position:relative; bottom:5px;right:5px'
         replayBtn.style='text-align:bottom;font-size:1px; font-family:versusFont;position:relative; bottom:2px;right:5px; padding:.08em .2em; border:0.01em #2D3E40 solid; font-family: Franklin Gothic Medium;background:#2D3E40;border-radius:.1em;color:orange'
             Blockbg[8].appendChild(paraForWin)
@@ -209,6 +224,67 @@ let startGame = function(i){
             
 
         },6000)
+    }
+
+    DrawAnimation=function(){
+
+        setTimeout(()=>{
+                
+
+            playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
+            playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
+            
+            Blockbg[8].removeChild
+            
+        Blockbg[0].style='background:orange;transform:translate(0,95px)'
+        Blockbg[8].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[2].style='background:orange;transform:translate(0,95px)'
+        Blockbg[6].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[1].style='background:orange;transform:translate(0,95px)'
+        Blockbg[7].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[8].querySelector('p').textContent=' '
+        
+        },1000)
+        setTimeout(()=>{
+            
+            Blockbg[2].style='background:orange;transform:translate(-95px,95px)'
+            Blockbg[3].style='background:orange;transform:translate(95px,0)'
+            Blockbg[5].style='background:orange;transform:translate(-95px,0)'
+            Blockbg[8].style='background:orange;transform:translate(-95px,-95px)'
+            Blockbg[0].style='background:orange;transform:translate(95px,95px)'
+            Blockbg[6].style='background:orange;transform:translate(95px,-95px)'
+            PlayGround.style.background='#E4F2E7'
+            PlayGround.style.boxShadow='none'
+            PlayGround.style.border='none'
+            paraMark.textContent=''
+
+        },5000)
+        setTimeout(()=>{
+            
+            Blockbg[0].firstChild.textContent='I'
+            Blockbg[1].firstChild.textContent='T'
+            Blockbg[2].firstChild.textContent='S'
+            Blockbg[3].firstChild.textContent='\''
+            Blockbg[4].firstChild.textContent=' '
+            Blockbg[5].firstChild.textContent='R'
+            Blockbg[6].firstChild.textContent='D'
+            Blockbg[7].firstChild.textContent='A'
+            Blockbg[8].firstChild.textContent='W'
+
+            Blockbg[0].style='background:orange;transform:translate(-285px,95px)'
+            Blockbg[1].style='background:orange;transform:translate(-285px,95px)'
+            Blockbg[2].style='background:orange;transform:translate(-190px,95px)'
+            Blockbg[3].style='background:orange;transform:translate(-95px,0)'
+            Blockbg[4].style='background:orange;transform:translate(0,0)'
+            Blockbg[5].style='background:orange;transform:translate(95px,0)'
+            Blockbg[6].style='background:orange;transform:translate(190px,-95px)'
+            Blockbg[7].style='background:orange;transform:translate(285px,-95px)'
+            Blockbg[8].style='background:orange;transform:translate(285px,-95px)'
+
+           
+
+        },5000)
+
     }
 
     checkPair  = function(){
@@ -294,14 +370,15 @@ let startGame = function(i){
             addMark,
             Turn,
             checkPair,
-            winAnimation
+            winAnimation,
+            DrawAnimation
             
            
         }
 
     }
-    player1 = createPlayer('player1','X');
-    player2 = createPlayer('player2','O');
+    player1 = createPlayer('playerI','X');
+    player2 = createPlayer('playerII','O');
 
     
 
@@ -310,14 +387,15 @@ let startGame = function(i){
     playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1"  
         player1.Turn('player2')
        player1.addMark()
+       markCount++;
        result = player1.checkPair()
      
        if(result==true)
        {
         console.log('player1  win')
-        winAnimation()
-       
-       
+        player1.winAnimation()
+       }else if(result==false && markCount==8){
+        player1.DrawAnimation()
        }
        
        
@@ -329,14 +407,17 @@ let startGame = function(i){
     playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1"  
     player2.Turn('player1')
        player2.addMark()
+       markCount++;
        result = player2.checkPair()
        console.log(result)
        
        if(result==true)
        {
         console.log('player2  win')
-        winAnimation()
+        player2.winAnimation()
 
+       }else if(result==false && markCount==8){
+        player2.DrawAnimation()
        }
 
    }
