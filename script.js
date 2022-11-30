@@ -91,7 +91,7 @@ let startGame = function(i){
     const para = document.createElement('p');
     para.className='markPara'
     let markPara = document.querySelectorAll('.markPara')
-    let createPlayer = function(mark){
+    let createPlayer = function(name,mark){
     
         function addMark(){
             
@@ -110,9 +110,98 @@ let startGame = function(i){
         turnMsg.textContent=`Now it's your Turn ${name}`
 
         }
-
+    let paraT
     let Blockbg = document.querySelectorAll('.block')
-   
+    let paraForWin = document.createElement('p')
+    let replayBtn = document.createElement('button')
+    replayBtn.textContent='REPLAY'
+        replayBtn.addEventListener('click',()=>{
+            reset();
+
+        })
+    paraForWin.className='winMsg'
+    reset = function(){
+
+        versus.style='display:none'
+       
+        main.style='width:0px'
+        setTimeout(()=>{
+            
+            main.style=' position: relative ;width: 100vw;height: 100vh;background-color: var(--Dominant-clr);display: flex;align-items: center;justify-content: center; flex-direction: column;gap: 20px;'
+           setTimeout(()=>{
+            playBoard.style.display='flex'
+
+           },5000)
+
+        },1300)
+        setTimeout(()=>{
+
+        for(let i=0;i<9;i++){
+    
+            Blockbg[i].style='background:#E4F2E7;transform:translate(0,0)'
+            
+          playGroundMark= [0,1,2,3,4,5,6,7,8]
+
+            removeAllChildNodes(Blockbg[i])
+            function removeAllChildNodes(parent) {
+                while (parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
+            }
+
+        }
+       
+     
+
+        },1000)
+
+
+
+
+    }
+    winAnimation = function(){
+        setTimeout(()=>{
+                
+            Blockbg[8].removeChild
+            
+        Blockbg[0].style='background:orange;transform:translate(0,95px)'
+        Blockbg[8].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[2].style='background:orange;transform:translate(0,95px)'
+        Blockbg[6].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[1].style='background:orange;transform:translate(0,95px)'
+        Blockbg[7].style='background:orange;transform:translate(0,-95px)'
+        Blockbg[8].querySelector('p').textContent=' '
+        },1000)
+        setTimeout(()=>{
+            
+            Blockbg[2].style='background:orange;transform:translate(-95px,95px)'
+            Blockbg[3].style='background:orange;transform:translate(95px,0)'
+            Blockbg[5].style='background:orange;transform:translate(-95px,0)'
+            Blockbg[8].style='background:orange;transform:translate(-95px,-95px)'
+            Blockbg[0].style='background:orange;transform:translate(95px,95px)'
+            Blockbg[6].style='background:orange;transform:translate(95px,-95px)'
+            paraMark.textContent=''
+
+        },5000)
+
+        setTimeout(()=>{
+            
+           
+            
+
+        Blockbg[8].style='scale:20;background:orange'
+        paraForWin.textContent=`YOU WIN ADITYA`
+        paraForWin.style='font-size:3px; font-family:versusFont;color:#2D3E40;;position:relative; bottom:5px;right:5px'
+        replayBtn.style='text-align:bottom;font-size:1px; font-family:versusFont;position:relative; bottom:2px;right:5px; padding:.08em .2em; border:0.01em #2D3E40 solid; font-family: Franklin Gothic Medium;background:#2D3E40;border-radius:.1em;color:orange'
+            Blockbg[8].appendChild(paraForWin)
+            Blockbg[8].appendChild(replayBtn)
+
+      
+           
+            
+
+        },6000)
+    }
 
     checkPair  = function(){
 
@@ -124,37 +213,8 @@ let startGame = function(i){
             Blockbg[0].style='background:orange;'
             Blockbg[4].style='background:orange'
             Blockbg[8].style='background:orange;'
-            setTimeout(()=>{
-                Blockbg[8].removeChild
-                
-            Blockbg[0].style='background:orange;transform:translate(0,95px)'
-            Blockbg[8].style='background:orange;transform:translate(0,-95px)'
-            Blockbg[2].style='background:orange;transform:translate(0,95px)'
-            Blockbg[6].style='background:orange;transform:translate(0,-95px)'
-            Blockbg[1].style='background:orange;transform:translate(0,95px)'
-            Blockbg[7].style='background:orange;transform:translate(0,-95px)'
-            Blockbg[8].querySelector('p').textContent=' '
-            },1000)
-            setTimeout(()=>{
-                
-                Blockbg[2].style='background:orange;transform:translate(-95px,95px)'
-                Blockbg[3].style='background:orange;transform:translate(95px,0)'
-                Blockbg[5].style='background:orange;transform:translate(-95px,0)'
-                Blockbg[8].style='background:orange;transform:translate(-95px,-95px)'
-                Blockbg[0].style='background:orange;transform:translate(95px,95px)'
-                Blockbg[6].style='background:orange;transform:translate(95px,-95px)'
-                paraMark.textContent=''
 
-            },5000)
-
-            setTimeout(()=>{
-                
-               
-                
-                Blockbg[8].style='scale:20;background:orange'
-                
-
-            },6000)
+         
           
 
            }else if(playGroundMark[2] === playGroundMark[4] && playGroundMark[4] === playGroundMark[6])
@@ -165,6 +225,7 @@ let startGame = function(i){
             Blockbg[2].style.background='orange'
             Blockbg[4].style.background='orange'
             Blockbg[6].style.background='orange'
+            
 
            }else if(playGroundMark[0] === playGroundMark[3] && playGroundMark[3] === playGroundMark[6])
           {
@@ -179,6 +240,7 @@ let startGame = function(i){
             Blockbg[1].style.background='orange'
             Blockbg[4].style.background='orange'
             Blockbg[7].style.background='orange'
+            
 
             }else if(playGroundMark[2] === playGroundMark[5] && playGroundMark[5] === playGroundMark[8])
            {
@@ -186,6 +248,7 @@ let startGame = function(i){
             Blockbg[2].style.background='orange'
             Blockbg[5].style.background='orange'
             Blockbg[8].style.background='orange'
+            
 
            }else if(playGroundMark[0] === playGroundMark[1] && playGroundMark[1] === playGroundMark[2])
            {
@@ -200,6 +263,7 @@ let startGame = function(i){
             Blockbg[3].style.background='orange'
             Blockbg[4].style.background='orange'
             Blockbg[5].style.background='orange'
+          
 
           } else if(playGroundMark[6] === playGroundMark[7] && playGroundMark[7] === playGroundMark[8])
           {
@@ -207,6 +271,7 @@ let startGame = function(i){
             Blockbg[6].style.background='orange'
             Blockbg[7].style.background='orange'
             Blockbg[8].style.background='orange'
+          
 
            }else{
 
@@ -220,13 +285,15 @@ let startGame = function(i){
           return{
             addMark,
             Turn,
-            checkPair
+            checkPair,
+            winAnimation
+            
            
         }
 
     }
-    player1 = createPlayer('X');
-    player2 = createPlayer('O');
+    player1 = createPlayer('player1','X');
+    player2 = createPlayer('player2','O');
 
     
 
@@ -236,9 +303,13 @@ let startGame = function(i){
         player1.Turn('player2')
        player1.addMark()
        result = player1.checkPair()
+     
        if(result==true)
        {
         console.log('player1  win')
+        winAnimation()
+       
+       
        }
        
        
@@ -252,9 +323,12 @@ let startGame = function(i){
        player2.addMark()
        result = player2.checkPair()
        console.log(result)
+       
        if(result==true)
        {
         console.log('player2  win')
+        winAnimation()
+
        }
 
    }

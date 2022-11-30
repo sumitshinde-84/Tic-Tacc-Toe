@@ -49,6 +49,7 @@ body{
     flex-direction: column;
     gap: 20px;
     transition: 1.5s;
+    overflow: hidden;
 
 }
 
@@ -283,7 +284,7 @@ body{
     display: flex;
     justify-content: center;
     box-shadow:inset  5px 5px 5px var(--gray-acccent);
-    
+    flex-direction: column;
     text-align: center;
     align-items: center;
     
