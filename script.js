@@ -162,6 +162,10 @@ let startGame = function(i){
     winAnimation = function(){
         setTimeout(()=>{
                 
+
+            playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
+            playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(0,0);opacity:0"
+            
             Blockbg[8].removeChild
             
         Blockbg[0].style='background:orange;transform:translate(0,95px)'
@@ -171,6 +175,7 @@ let startGame = function(i){
         Blockbg[1].style='background:orange;transform:translate(0,95px)'
         Blockbg[7].style='background:orange;transform:translate(0,-95px)'
         Blockbg[8].querySelector('p').textContent=' '
+        
         },1000)
         setTimeout(()=>{
             
@@ -180,6 +185,9 @@ let startGame = function(i){
             Blockbg[8].style='background:orange;transform:translate(-95px,-95px)'
             Blockbg[0].style='background:orange;transform:translate(95px,95px)'
             Blockbg[6].style='background:orange;transform:translate(95px,-95px)'
+            PlayGround.style.background='#E4F2E7'
+            PlayGround.style.boxShadow='none'
+            PlayGround.style.border='none'
             paraMark.textContent=''
 
         },5000)
