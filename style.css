@@ -16,6 +16,7 @@
   --Dominant-clr:#E4F2E7;
   --Element-clr:#93BFB7;
   --Dark-accent:#2D3E40;
+  
    
   /* Extra colors */
 
@@ -29,6 +30,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 
 }
 

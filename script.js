@@ -271,15 +271,15 @@ let startGame = function(i){
             Blockbg[7].firstChild.textContent='A'
             Blockbg[8].firstChild.textContent='W'
 
-            Blockbg[0].style='background:orange;transform:translate(-285px,95px)'
-            Blockbg[1].style='background:orange;transform:translate(-285px,95px)'
-            Blockbg[2].style='background:orange;transform:translate(-190px,95px)'
-            Blockbg[3].style='background:orange;transform:translate(-95px,0)'
-            Blockbg[4].style='background:orange;transform:translate(0,0)'
-            Blockbg[5].style='background:orange;transform:translate(95px,0)'
-            Blockbg[6].style='background:orange;transform:translate(190px,-95px)'
-            Blockbg[7].style='background:orange;transform:translate(285px,-95px)'
-            Blockbg[8].style='background:orange;transform:translate(285px,-95px)'
+            Blockbg[0].style='background:#A62B1F;color:#E4F2E7;transform:translate(-285px,95px)'
+            Blockbg[1].style='background:#A62B1F;color:#E4F2E7;transform:translate(-285px,95px)'
+            Blockbg[2].style='background:#A62B1F;color:#E4F2E7;transform:translate(-190px,95px)'
+            Blockbg[3].style='background:#A62B1F;color:#E4F2E7;;transform:translate(-95px,0)'
+            Blockbg[4].style='background:#A62B1F;color:#E4F2E7;transform:translate(0,0)'
+            Blockbg[5].style='background:#A62B1F;color:#E4F2E7;transform:translate(95px,0)'
+            Blockbg[6].style='background:#A62B1F;color:#E4F2E7;transform:translate(190px,-95px)'
+            Blockbg[7].style='background:#A62B1F;color:#E4F2E7;;transform:translate(285px,-95px)'
+            Blockbg[8].style='background:#A62B1F;color:#E4F2E7;transform:translate(285px,-95px)'
 
            
 
@@ -382,7 +382,7 @@ let startGame = function(i){
 
     
 
-   if(count % 2 == 0){
+   if(count % 2 == 0 ){
     playerPlate2.style="height: 100px;width: 300px;border: 3px orange solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1;box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
     playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1"  
         player1.Turn('player2')
@@ -390,16 +390,16 @@ let startGame = function(i){
        markCount++;
        result = player1.checkPair()
      
-       if(result==true)
+       if(result==true && markCount< 8)
        {
         console.log('player1  win')
         player1.winAnimation()
        }else if(result==false && markCount==8){
-        player1.DrawAnimation()
+        DrawAnimation()
        }
        
        
-   }else{
+   }else {
     
    
     
@@ -411,13 +411,13 @@ let startGame = function(i){
        result = player2.checkPair()
        console.log(result)
        
-       if(result==true)
+       if(result==true && markCount< 8)
        {
         console.log('player2  win')
         player2.winAnimation()
 
        }else if(result==false && markCount==8){
-        player2.DrawAnimation()
+        DrawAnimation()
        }
 
    }
