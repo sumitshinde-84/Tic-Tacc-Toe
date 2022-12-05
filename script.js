@@ -5,9 +5,7 @@ let ticTacToe = (function(){
     let player2;
     const turnMsg = document.querySelector('#turnMsg');
     const progressBar = document.getElementsByClassName('progress-bar')[0]
-   
-
-    
+    let opponent='computer'
     setInterval(()=>{
 
         const computedStyle = getComputedStyle(progressBar);
@@ -82,14 +80,15 @@ let count =0;
 let markCount=0;
 let playGroundMark = new Array(9)
 playGroundMark = [0,1,2,3,4,5,6,7,8]
+let action =[]
 
 let startGame = function(i){
    
     const Block = document.querySelector(`.block${i}`);
    
     const turnMsg = document.querySelector('#turnMsg');
-
-    if(Block.childElementCount>0){
+    
+    if( Block ==null|| Block.childElementCount>0 ){
         return
     }
     const PlayGround =document.querySelector('.playground')
@@ -167,10 +166,18 @@ let startGame = function(i){
             }
             turnMsg.style.display='block';
             Readybtn.style.display='block'
-            playGroundMark= [0,1,2,3,4,5,6,7,8]
+            
+            
+           
+                playGroundMark.shift()
+                playGroundMark.push(i)
+
+            
+            console.log(playGroundMark)
             result=''
             markCount=0;
-            count=0
+            count=0;
+            action.pop();
   
 
         }
@@ -184,6 +191,7 @@ let startGame = function(i){
 
     }
     winAnimation = function(){
+        action.push(1)
         setTimeout(()=>{
                 
 
@@ -198,7 +206,7 @@ let startGame = function(i){
         Blockbg[6].style='background:orange;transform:translate(0,-95px)'
         Blockbg[1].style='background:orange;transform:translate(0,95px)'
         Blockbg[7].style='background:orange;transform:translate(0,-95px)'
-        Blockbg[8].querySelector('p').textContent=' '
+        
         
         },1000)
         setTimeout(()=>{
@@ -212,7 +220,7 @@ let startGame = function(i){
             PlayGround.style.background='#E4F2E7'
             PlayGround.style.boxShadow='none'
             PlayGround.style.border='none'
-            paraMark.textContent=''
+            
 
         },5000)
 
@@ -236,7 +244,7 @@ let startGame = function(i){
     }
 
     DrawAnimation=function(){
-
+        action.push(1)
         setTimeout(()=>{
                 
 
@@ -265,7 +273,7 @@ let startGame = function(i){
             PlayGround.style.background='#E4F2E7'
             PlayGround.style.boxShadow='none'
             PlayGround.style.border='none'
-            paraMark.textContent=''
+          
 
         },3000)
         setTimeout(()=>{
@@ -390,10 +398,12 @@ let startGame = function(i){
     }
     player1 = createPlayer('playerI','X');
     player2 = createPlayer('playerII','O');
+    computer = createPlayer('computer','O');
 
     
 
-   if(count % 2 == 0 ){
+   if(count % 2 == 0  ){
+
     playerPlate2.style="height: 100px;width: 300px;border: 3px orange solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1;box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
     playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1"  
        
@@ -406,11 +416,30 @@ let startGame = function(i){
        {
         console.log('player1  win')
         player1.winAnimation()
-       }else if(result==false && count>=8){
-        DrawAnimation()
+       }else if(result==false && count>=9){
+        player1.DrawAnimation()
        }
+    }else if(opponent =='computer' && count % 2 != 0 ) {
+    
+   
+    
+    playerPlate1.style="height: 100px;width: 300px;border: 3px orange solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1;box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;;"  
+    playerPlate2.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1"  
+    computer.Turn('player1')
+       computer.addMark()
        
+       result = computer.checkPair()
+       console.log(result)
        
+       if(result==true && markCount< 9)
+       {
+        console.log('player2  win')
+        computer.winAnimation()
+
+       }else if(result==false && count>=9){
+         computer.DrawAnimation()
+       }
+
    }else {
     
    
@@ -428,15 +457,17 @@ let startGame = function(i){
         console.log('player2  win')
         player2.winAnimation()
 
-       }else if(rresult==false && count>=8){
-        DrawAnimation()
+       }else if(result==false && count>=9){
+        player2.DrawAnimation()
        }
 
    }
 
 }
     return{
-        startGame,   
+        startGame,
+        playGroundMark,
+        action 
     }    
 
 })()
@@ -445,7 +476,43 @@ let startGame = function(i){
 // this is function is in global scope
 
 function hop(i){
+
+    let action = ticTacToe.action
+    console.log(action)
+   
+    
+if(action.length>0){
+    return
+}else{
+
     ticTacToe.startGame(i)
+
+
+    
+let playGroundMark = ticTacToe.playGroundMark
+console.log(playGroundMark)
+let emptyCell = playGroundMark.filter((item)=>{
+    if((typeof(item))=='number'){
+        return true
 
 }
 
+})
+if(emptyCell.length==0 ||action.length>0 ){
+    clearTimeout(runCom)
+    return
+}else{
+let randNo = Math.floor(Math.random()*(emptyCell.length - 0))
+
+runCom = setTimeout(()=>{
+    
+    console.log(emptyCell)
+    ticTacToe.startGame(emptyCell[randNo])
+}
+,2000)
+}}
+
+playGroundMark = [0,1,2,3,4,5,6,7,8]
+emptyCell=[]
+
+}
