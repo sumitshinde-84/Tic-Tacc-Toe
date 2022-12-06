@@ -5,7 +5,8 @@ let ticTacToe = (function(){
     let player2;
     const turnMsg = document.querySelector('#turnMsg');
     const progressBar = document.getElementsByClassName('progress-bar')[0]
-    let opponent='computer'
+    let opponent=[];
+
     setInterval(()=>{
 
         const computedStyle = getComputedStyle(progressBar);
@@ -35,12 +36,16 @@ let ticTacToe = (function(){
     const text = document.querySelector('.text');
     const versus = document.querySelector('.versus')
     const versusButtonPlayer = document.querySelector('.player')
+    const versusButtonComputer = document.querySelector('.computer');
     const playBoard = document.querySelector('.playboard')
     const main = document.querySelector('.main')
    
     versusButtonPlayer.addEventListener('click',()=>{
         versus.style='display:none'
-       
+        if(opponent.length>0){
+            opponent.pop()
+        }
+       opponent.push('player')
         main.style='width:0'
         setTimeout(()=>{
             
@@ -53,6 +58,24 @@ let ticTacToe = (function(){
         },1300)
     })
 
+
+    versusButtonComputer.addEventListener('click',()=>{
+        versus.style='display:none'
+        if(opponent.length>0){
+            opponent.pop()
+        }
+       opponent.push('computer')
+        main.style='width:0'
+        setTimeout(()=>{
+            
+            main.style=' position: relative ;width: 100vw;height: 100vh;background-color: var(--Dominant-clr);display: flex;align-items: center;justify-content: center; flex-direction: column;gap: 20px;'
+           setTimeout(()=>{
+            playBoard.style.display='flex'
+
+           },1500)
+
+        },1300)
+    })
     window.addEventListener('load',()=>{
        
         setTimeout(() => {
@@ -85,7 +108,7 @@ let action =[]
 let startGame = function(i){
    
     const Block = document.querySelector(`.block${i}`);
-   
+    let result='';
     const turnMsg = document.querySelector('#turnMsg');
     
     if( Block ==null|| Block.childElementCount>0 ){
@@ -99,20 +122,28 @@ let startGame = function(i){
     
         function addMark(){
             
+            // if(result==true){
+            //     return
+            // }else{
             para.textContent=mark
           Block.appendChild(para)
           playGroundMark[i]=mark;
           console.log(playGroundMark)
          
           count++;
-         
+            // }
          
         }
-    let result='';
+  
      
     function Turn(name){
             
-        turnMsg.textContent=`Now it's your Turn ${name}`
+        if(name=='computer'){
+            turnMsg.textContent=`Wait it's ${name} turn`
+        }else{
+            turnMsg.textContent=`Now it's your Turn ${name}`
+        }
+      
 
         }
     let paraT
@@ -206,7 +237,13 @@ let startGame = function(i){
         Blockbg[6].style='background:orange;transform:translate(0,-95px)'
         Blockbg[1].style='background:orange;transform:translate(0,95px)'
         Blockbg[7].style='background:orange;transform:translate(0,-95px)'
-        
+        for(i=0;i<9;i++){
+
+            if(Blockbg[i].childElementCount>0){
+                Blockbg[i].querySelector('p').textContent=' '
+                }
+        }
+     
         
         },1000)
         setTimeout(()=>{
@@ -297,7 +334,7 @@ let startGame = function(i){
             Blockbg[6].style='background:orange;transform:translate(190px,-95px)'
             Blockbg[7].style='background:orange;transform:translate(285px,-95px)'
             Blockbg[8].style='background:orange;transform:translate(285px,-95px)'
-            
+           
             turnMsg.style.display='none';
             Readybtn.style.display='none'
            
@@ -406,8 +443,13 @@ let startGame = function(i){
 
     playerPlate2.style="height: 100px;width: 300px;border: 3px orange solid; border-radius: 4px;position: absolute;top:210px; transform: translate(450px,0);opacity:1;box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
     playerPlate1.style="height: 100px;width: 300px;border: 3px var(--Dark-accent) solid; border-radius: 4px;position: absolute;top:210px; transform: translate(-450px,0);opacity:1"  
-       
-    player1.Turn('player2')
+       if(opponent[0]=='computer'){
+        player1.Turn('computer')
+       }else{
+
+        player1.Turn('player2')
+       }
+    
        player1.addMark()
        
        result = player1.checkPair()
@@ -419,7 +461,7 @@ let startGame = function(i){
        }else if(result==false && count>=9){
         player1.DrawAnimation()
        }
-    }else if(opponent =='computer' && count % 2 != 0 ) {
+    }else if(opponent[0] =='computer' && count % 2 != 0 ) {
     
    
     
@@ -467,7 +509,8 @@ let startGame = function(i){
     return{
         startGame,
         playGroundMark,
-        action 
+        action,
+        opponent
     }    
 
 })()
@@ -478,19 +521,20 @@ let startGame = function(i){
 function hop(i){
 
     let action = ticTacToe.action
+    
     console.log(action)
    
     
 if(action.length>0){
     return
+
 }else{
 
-    ticTacToe.startGame(i)
+ticTacToe.startGame(i) 
 
-
-    
 let playGroundMark = ticTacToe.playGroundMark
 console.log(playGroundMark)
+
 let emptyCell = playGroundMark.filter((item)=>{
     if((typeof(item))=='number'){
         return true
@@ -498,7 +542,8 @@ let emptyCell = playGroundMark.filter((item)=>{
 }
 
 })
-if(emptyCell.length==0 ||action.length>0 ){
+console.log(ticTacToe.opponent)
+if(ticTacToe.opponent[0]=='player'|| emptyCell.length==0 ||action.length>0 ){
     clearTimeout(runCom)
     return
 }else{
@@ -512,7 +557,6 @@ runCom = setTimeout(()=>{
 ,2000)
 }}
 
-playGroundMark = [0,1,2,3,4,5,6,7,8]
-emptyCell=[]
+
 
 }
